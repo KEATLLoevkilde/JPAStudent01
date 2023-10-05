@@ -1,9 +1,6 @@
 package com.example.jpastudent01.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +14,26 @@ public class Student {
     private String navn;
     private LocalDate bornDate;
     private LocalTime bornTime;
+
+    @ManyToOne
+    @JoinColumn(name = "skole", referencedColumnName = "navn")
+    Skole skole;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Skole getSkole() {
+        return skole;
+    }
+
+    public void setSkole(Skole skole) {
+        this.skole = skole;
+    }
 
     public String getNavn() {
         return navn;
